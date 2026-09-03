@@ -35,47 +35,12 @@ The objectives of this project are:
  
 The complete Hardware Trojan detection pipeline is shown below:
 
-┌─────────────────────┐
-│    Verilog RTL      │
-│    Hardware Code    │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│   PyVerilog Parser  │
-│ RTL & Data Analysis │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│   DFG Generation    │
-│ Nodes and Edges     │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│    Node Encoding    │
-│ Graph Features      │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│    GCN Training     │
-│ Pattern Learning    │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Trojan Classification│
-│ TROJAN / NON-TROJAN │
-└─────────────────────┘
+Verilog RTL Hardware Code  ------>  PyVerilog Parser RTL & Data Analysis  ------>  DFG Generation Nodes and Edges ------> Node Encoding Graph Features  ------>  GCN Training Pattern Learning  ------> Trojan Classification TROJAN / NON-TROJAN 
 
 ## GNN Model Development
 
 A Graph Convolutional Network (GCN) is used as the main classification model.
-
 The GCN processes the graph structure and learns relationships between connected hardware components.
-
 The model learns to identify structural differences between:
 
 - Trojan-free hardware designs
